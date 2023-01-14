@@ -25,12 +25,12 @@ public class SauceDemoLoginPage {
     @FindBy(xpath = "//*[@id='login-button']")
     public WebElement btnLogin;
 
-    @FindAll(
-    {
-        @FindBy(id = "user-name"),
-        @FindBy(id = "password"),
-        @FindBy(xpath = "//*[@id='login-button']")
-    }
-    )
+   @FindAll(
+   {
+       @FindBy(id = "user-name"),
+       @FindBy(id = "password"),
+       @FindBy(xpath = "//*[@id='login-button']")
+   }
+   )
     public List<WebElement> inputElements;
 }
