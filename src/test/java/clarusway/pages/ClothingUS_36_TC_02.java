@@ -6,14 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
-
 import java.util.List;
 
-public class ClothingUS36TC02 {
+public class ClothingUS_36_TC_02 {
     private WebDriver driver;
 
-    public ClothingUS36TC02() {
+    public ClothingUS_36_TC_02(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -58,8 +57,8 @@ public class ClothingUS36TC02 {
     @FindBy(xpath = "(//span[text()='plus'])[9]")
     private WebElement plusButton;
 
-    @FindBy(id = "nr-ext-rsicon")
-    private WebElement cart;//iframe
+    @FindBy(xpath = "//button[contains(@class,'hidden product-cart')]")
+    private WebElement cart;
 
     @FindBy(className = "font-bold text-heading")
     private WebElement seppettekiUrun;
@@ -68,7 +67,7 @@ public class ClothingUS36TC02 {
 
     //***********TC01 deki aynı urun tıklanır******
     @FindBy(xpath = "span[text()='pieces available']")
-    private WebElement urunStokSayısı;
+    private WebElement urunStokSayisi;
 
     //US37TC03->sayfada seciken ürüne stok sayısınca tıklar
 
@@ -109,7 +108,7 @@ public class ClothingUS36TC02 {
     //@FindBy(id = "code")
     //private WebElement kuponYapisacakAlan();
 
-    @FindBy(xpath ="//*[text()='Apply']")
+    @FindBy(xpath = "//*[text()='Apply']")
     private WebElement applyButton;
     @FindBy(xpath = "//p[text()='Discount']")
     private WebElement discountText;
@@ -133,10 +132,10 @@ public class ClothingUS36TC02 {
 
     //US38TC09
     @FindBy(partialLinkText = "Notch Lapel Elastic Waist Plain Trench Coat")
-    private WebElement siparisSayfasıindakiUrun;
+    private WebElement siparisSayfasindakiUrun;
 
     @FindBy(xpath = "//p[.='$4,995.00']")
-    private WebElement siparisSayfasıindakiUrunFiyati;
+    private WebElement siparisSayfasindakiUrunFiyati;
 
     //US38TC10
 
@@ -148,24 +147,31 @@ public class ClothingUS36TC02 {
     @FindBy(className = "rounded border border-border-200 py-4 px-5 shadow-sm")
     private List<WebElement> odemeBilgileri;
 
+    //US33TC01
 
+    // @FindBy(id = "headlessui-menu-item-22")////span[.='Bakery']
+    @FindBy(xpath = "//span[text()='Clothing']")////span[.='Bakery']
+    private WebElement bakeryButton;
 
+    @FindBy(className = "h-5 w-5 stroke-2")
+    private WebElement sepeteEkleButonuBakery;
 
+    @FindBy(xpath = "(//button[contains(@class,'cursor-pointer')])[3]")
+    private WebElement bakeryMinusButtonCart;
+    @FindBy(xpath = "((//button[contains(@class,'cursor-pointer')])[4]")
+    private WebElement bakeryPlusButtonCart;
 
+    /*
+    sepette ürün eklendiğini "No products found" yazısını görmemeli.
+     */
+    @FindBy(tagName = "h4")
+    private WebElement noProductsFoundText;
 
-
-
-
-
-
-
-
-
-
-    @Test
-    public void test() {
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");
-        Driver.getDriver().switchTo().frame(Driver.getDriver().findElement(By.className("h-full w-screen max-w-md")));
-        plusButtonCart.click();
+    public void sepetIslemleriBakery() {
+        bakeryButton.click();
+        sepeteEkleButonuBakery.click();
+        cart.click();
+        bakeryPlusButtonCart.click();
+        bakeryMinusButtonCart.click();
     }
 }

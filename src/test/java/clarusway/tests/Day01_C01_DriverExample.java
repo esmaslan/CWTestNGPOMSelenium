@@ -1,5 +1,6 @@
 package clarusway.tests;
 
+import clarusway.pages.ClothingUS35TC01;
 import clarusway.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,4 +36,5 @@ public class Day01_C01_DriverExample {
 
         driver.quit();
     }
+
 }
